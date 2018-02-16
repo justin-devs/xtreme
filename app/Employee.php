@@ -38,7 +38,10 @@ class Employee extends Authenticatable
     {
         $this->notify(new EmployeeResetPassword($token));
     }
-
+    public function job()
+    {
+        return $this->hasMany('App\Job');
+    }
     public function roles(){
         return $this->belongsToMany('App\Role');
     }

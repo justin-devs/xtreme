@@ -1,0 +1,13 @@
+Datefrom
+Dateto
+Timefrom
+TimeTo
+employeeid
+jobid
+customerid
+Subjobid - (e.g painter, Primer paints it then main layer paint finisher)
+
+
+
+
+Employee will have to select role each tome he opens a new job

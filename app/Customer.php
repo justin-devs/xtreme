@@ -14,7 +14,7 @@ class Customer extends Model
             ->orWhere('cell', 'like', '%' .$s. '%');
     }
 	
-    public function Vehicles(){
+    public function vehicles(){
     	return $this->hasMany('App\Vehicle');
     }
 }

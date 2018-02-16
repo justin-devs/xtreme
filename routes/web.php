@@ -26,14 +26,16 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('/password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
   Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
 
-  Route::resource('jobs', 'JobController')->middleware('admin');
-  Route::resource('employees', 'EmployeeController')->middleware('admin');
-  Route::resource('vehicles', 'VehicleController')->middleware('admin');
-  Route::resource('customers', 'CustomerController')->middleware('admin');
-  Route::resource('roles', 'RoleController')->middleware('admin');
+  Route::resource('jobs', 'Admin\JobController')->middleware('admin');
+  Route::resource('employees', 'Admin\EmployeeController')->middleware('admin');
+  Route::resource('vehicles', 'Admin\VehicleController')->middleware('admin');
+  Route::resource('customers', 'Admin\CustomerController')->middleware('admin');
+  Route::resource('roles', 'Admin\RoleController')->middleware('admin');
 });
 
 Route::group(['prefix' => 'employee'], function () {
+
+  Route::get('/', 'Employee\JobController@index');
   Route::get('/login', 'EmployeeAuth\LoginController@showLoginForm')->name('login');
   Route::post('/login', 'EmployeeAuth\LoginController@login');
   Route::post('/logout', 'EmployeeAuth\LoginController@logout')->name('logout');

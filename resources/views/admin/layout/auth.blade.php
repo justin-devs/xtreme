@@ -47,6 +47,11 @@
                     &nbsp;
  
                 </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="{{url('/employee/home')}}"> Employee Page</a></li>                   
+                    &nbsp;
+ 
+                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

@@ -4,24 +4,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+      <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
 
     <title>{{ config('app.name', 'Laravel Multi Auth Guard') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
-    <!-- Scripts -->
-    <script>
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
-    </script>
+  
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -34,30 +35,30 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/employee') }}">
-                    {{ config('app.name', 'Laravel Multi Auth Guard') }}: Employee
+                <a class="navbar-brand" href="{{ url('/admin/home') }}">
+                    <img src="{{asset('img/Xtreme_Auto_Worx_logo.png')}}" style="max-height: 30px" alt="">
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="{{url('/employee/home')}}"> Employee</a></li>                   
                     &nbsp;
+ 
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/employee/login') }}">Login</a></li>
-                        <li><a href="{{ url('/employee/register') }}">Register</a></li>
-                    @else
+                    @auth('employee')
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::guard('employee')->user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="">Edit Profile</a></li>
                                 <li>
                                     <a href="{{ url('/employee/logout') }}"
                                         onclick="event.preventDefault();
@@ -71,15 +72,17 @@
                                 </li>
                             </ul>
                         </li>
-                    @endif
+                    @endauth
                 </ul>
             </div>
         </div>
     </nav>
-
+    <br>
     @yield('content')
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+
+    @yield('scripts')
 </body>
 </html>

@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Employee;
 
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Job;
+use App\Vehicle;
+use App\Employee;
 
 class JobController extends Controller
 {
@@ -14,8 +18,9 @@ class JobController extends Controller
      */
     public function index()
     {
-       // $jobs = Job::all();
-        return view('admin.jobs.jobs');//->with('jobs', $jobs);
+        $employees = Employee::all();
+        $jobs = Job::all();
+        return view('employee.home', ['jobs' => $jobs, 'employees' => $employees]);
     }
 
     /**
@@ -25,7 +30,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -36,7 +41,19 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $this->validate($request, [
+            'jobdescription' => 'required',
+            'vehicleid' => 'required',
+        ]);
+
+        $job = new Job;
+        $job->job_description = $request->jobdescription;
+        $job->employee_id = $request->employeeid;
+        $job->vehicle_id = $request->vehicleid;
+
+        $job->save();
+    
+        return redirect('/admin/jobs')->with('success', 'Job successfully added');
     }
 
     /**

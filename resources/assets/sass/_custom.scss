@@ -15,3 +15,28 @@ html{
 .uppercase {
     text-transform: uppercase;
 }
+.box {
+	background-color: lightgray;
+    border-radius: 8px;
+    padding: 5px;
+    color: white;
+    box-shadow: 2px 2px 4px black;
+}
+.user{
+	background-color: #31708f;
+	color: white;
+	font-weight: bold;
+}
+.red{
+	background-color: red;
+}
+.orange{
+	background-color: orange;
+}
+.lightgray{
+	background-color: lightgray;
+	border-radius: 15px;
+}
+.box-shadow{
+	box-shadow: 1px 1px 3px grey;
+}

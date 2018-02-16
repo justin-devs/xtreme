@@ -8,6 +8,7 @@
 require('./bootstrap');
 require('./select2.full.min');
 require('./select2.min');
+require('./jquery.numpad');
 
 
 

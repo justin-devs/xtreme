@@ -8371,6 +8371,39 @@ html {
   text-transform: uppercase;
 }
 
+.box {
+  background-color: lightgray;
+  border-radius: 8px;
+  padding: 5px;
+  color: white;
+  -webkit-box-shadow: 2px 2px 4px black;
+          box-shadow: 2px 2px 4px black;
+}
+
+.user {
+  background-color: #31708f;
+  color: white;
+  font-weight: bold;
+}
+
+.red {
+  background-color: red;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.lightgray {
+  background-color: lightgray;
+  border-radius: 15px;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 1px 1px 3px grey;
+          box-shadow: 1px 1px 3px grey;
+}
+
 .select2-container {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -9018,5 +9051,31 @@ html {
 
 .select2-container--classic.select2-container--open .select2-dropdown {
   border-color: #5897fb;
+}
+
+.nmpd-wrapper {
+  display: none;
+}
+
+.nmpd-target {
+  cursor: pointer;
+}
+
+.nmpd-grid {
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  z-index: 5000;
+  -khtml-user-select: none;
+  padding: 10px;
+  width: initial;
+}
+
+.nmpd-overlay {
+  z-index: 4999;
+}
+
+input.nmpd-display {
+  text-align: right;
 }
 

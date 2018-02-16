@@ -4,6 +4,11 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Job;
+use App\Vehicle;
+use App\Employee;
+
 
 class RedirectIfEmployee
 {
@@ -18,7 +23,10 @@ class RedirectIfEmployee
 	public function handle($request, Closure $next, $guard = 'employee')
 	{
 	    if (Auth::guard($guard)->check()) {
-	        return redirect('employee/home');
+	    	$employees = Employee::all();
+        $jobs = Job::all();
+        return view('employee.home', ['jobs' => $jobs, 'employees' => $employees]);
+
 	    }
 
 	    return $next($request);
